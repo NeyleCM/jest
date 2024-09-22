@@ -12,6 +12,10 @@ function addProduct(name, price) {
     if (!name || !price) {
         throw new Error('The name and price must be defined');
     }
+    const existingProduct = products.find(product => product.name === name); // Verificar si ya existe un producto con el mismo nombre
+    if (existingProduct) {
+        throw new Error('The product already exists');
+    }
     id++;
     products.push({ id, name, price });
 }
@@ -34,7 +38,7 @@ function getProducts() {
 function getProduct(productId) {// Id del producto que se desea obtener.
     const product = products.find(product => product.id === productId);// find para buscar el producto cuyo id sea igual a productId
     if (!product) {// Si no encuentra el producto, lanza un mensaje de error
-        throw new Error('Producto no encontrado');
+        throw new Error('The product does not exist');
     }
     return product;// Si lo encuentra, devuelve el producto.
 }
