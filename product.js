@@ -9,15 +9,15 @@ function resetProducts() {
 
 // Añadir un producto
 function addProduct(name, price) {
-    if (!name || !price) {
+    if (!name || !price) {//  evalúa si alguno de estos valores es "falso" 
         throw new Error('The name and price must be defined');
     }
     const existingProduct = products.find(product => product.name === name); // Verificar si ya existe un producto con el mismo nombre
     if (existingProduct) {
-        throw new Error('The product already exists');
+        throw new Error('The product already exists');// Lanza mensaje de error si el producto exitste
     }
-    id++;
-    products.push({ id, name, price });
+    id++;//Si no hay errores hasta este punto, se procede a asignar un nuevo id al producto.
+    products.push({ id, name, price });//Se agrega el nuevo producto a products.
 }
 
 // Eliminar un producto por su id
